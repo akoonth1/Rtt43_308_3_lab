@@ -12,22 +12,25 @@
 
 //Part 1
 
-// for(let i = 0; i <= 100; ++i ) {
-//     if(i % 3 != 0 && i % 5 != 0){
-//         console.log(i);
-//     } else if (i % 3 != 0 && i % 5 == 0)  {
+for(let i = 0; i <= 100; ++i ) {
+    if(i % 3 != 0 && i % 5 != 0){
+        console.log(i);
+    } else if (i % 3 != 0 && i % 5 == 0)  {
 
-//         console.log("Buzz");
-//     }
-//     else if (i % 3 == 0 && i % 5 != 0)  {
+        console.log("Buzz");
+    }
+    else if (i % 3 == 0 && i % 5 != 0)  {
 
-//         console.log("Fizz");
-//         }
+        console.log("Fizz");
+        }
 
-//     else {
-//         console.log("Fizz Buzz");
-//     }
-// }
+    else {
+        console.log("Fizz Buzz");
+    }
+}
+
+
+
 
 // Declare an arbitrary number, n.
 // Create a loop that searches for the next prime number, starting at n and incrementing from there.
@@ -92,7 +95,7 @@ else if (k == 3) {
 }
 
 
-nextprime(100)
+nextprime(1100)
 
 //Works
 
@@ -177,8 +180,8 @@ for (let i_t =0; i_t < test_string.length; i_t++)
 
 }
 
-console.log(counter_c)
-console.log(counter_n)
+// console.log(counter_c)
+// console.log(counter_n)
 console.log(text)
 
 
@@ -186,26 +189,27 @@ console.log(text)
 
 let true_count_cells = counter_c + counter_n
 
-console.log(true_count_cells)
+// console.log(true_count_cells)
 
-let list_of_cells =[]
+let cells ={}
 let text2 =""
 let cellcount = 0
 let escapechar ="\n"
 let fulltext =""
+let text3 = ""
 
 console.log("-----------------------------------------")
 // for (let x = 0; x <=true_count_cells-18; x++){
     // console.log(x);
-    // list_of_cells += "cell"+x+","
+    // cells += "cell"+x+","
 
     outerloop:
     for (let x = 0; x <= test_string.length; x++){
     let internal_counter = 0;
+   
      text2 =""
-    // console.log(x + "outer")
+    //console.log(x + "outer")
     // console.log(test_string[x] + " Hello")
-    // console.log(cellcount + "This is cell count")
     // console.log(true_count_cells)
     
         for (let i_t =x; i_t <= test_string.length; i_t++)
@@ -223,24 +227,38 @@ console.log("-----------------------------------------")
 
                 if (test_string[i_t+1] =="," || test_string[i_t+1] =="\n" || test_string[i_t+1] ==undefined  )
                     {   
-                        console.log(text2)
+
+                        // console.log(text2)
+                        // cell+cellcount
                         internal_counter += 1
                         i_t += 1
-                        text2 += " "
+                       
                         x = i_t 
+                        
                         // console.log(x+"xflag")
-                        cellcount += 1
+
                         if( test_string[i_t] =="\n"){
-                            fulltext += text2 +escapechar
+                         
+                            cells[+cellcount] =text2 //+ escapechar
+ 
+                             text2 += " "
+                             fulltext += text2 //+escapechar
+                             cellcount += 1
+
+                            text3 += "cell"+cellcount+"="+"'"+text2+"'" +"; "
                             continue outerloop;
                         } 
                         else{
-
+                            cells[cellcount] =text2
+                             text2 += " "
                         fulltext += text2 
+                        cellcount += 1
+                        
+                            text3 += "cell"+cellcount+"="+"'"+text2+"'" +"; "
                         continue outerloop;
                         }
 
-                        console.log(x + "inner")
+                        // console.log(x + "inner")
                         if( internal_counter <= i_t && internal_counter <=2)
                             {
             
@@ -254,8 +272,6 @@ console.log("-----------------------------------------")
                             }
                     }
 
-                
-
                 // console.log(text2)
                 // console.log(fulltext)
             }
@@ -268,5 +284,35 @@ console.log("-----------------------------------------")
         }    
 
 
+// console.log(text3)
+//         console.log(cells[0])        
+//         console.log(cells)
+//         console.log((cells))
 
-        console.log(fulltext)
+// console.log(fulltext)
+
+// eval("let q = 8; console.log(q+6); let x= 5")
+    
+
+console.log(cells[0], cells[1], cells[2], cells[3]);
+console.log(cells[4], cells[5], cells[6], cells[7]);
+console.log(cells[8], cells[9], cells[10], cells[11]);
+console.log(cells[12], cells[13], cells[14], cells[15]);
+console.log(cells[16], cells[17], cells[18], cells[19]);
+
+
+console.log("-----------------------------------------")
+
+eval(text3) //there's probably a better way to set a list of variables, was trying not to use an array
+
+
+// for (let i = 0; i < 4; i++) {
+//     let start = i * 4 + 1;
+//     console.log(`console.log(cell${start}, cell${start + 1}, cell${start + 2}, cell${start + 3});`);
+// To generate the requested format from console.log(cell1, cell2, cell3, cell4);
+
+console.log(cell1, cell2, cell3, cell4);
+console.log(cell5, cell6, cell7, cell8);
+console.log(cell9, cell10, cell11, cell12);
+console.log(cell13, cell14, cell15, cell16);
+console.log(cell17, cell18, cell19, cell20);
